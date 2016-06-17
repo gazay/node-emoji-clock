@@ -1,0 +1,27 @@
+{
+  "name": "node-emoji-clock",
+  "version": "0.1.0",
+  "description": "🕞 Time to show time properly 🕞",
+  "keywords": [
+    "time",
+    "emoji",
+    "clock"
+  ],
+  "author": "Alexey Gaziev <alex.gaziev@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gazay/node-emoji-clock"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "moment": "^2.13.0",
+    "eslint": "^2.9.0",
+    "eslint-config-airbnb-base": "^2.0.0",
+    "eslint-plugin-import": "^1.7.0",
+    "nsp": "^2.3.3"
+  },
+  "scripts": {
+    "test": "eslint . && nsp check"
+  }
+}
