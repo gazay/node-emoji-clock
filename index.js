@@ -25,6 +25,20 @@ const CLOCKS = {
   11.5: '🕦',
 };
 
+function hoursAndMinutesToEmoji(hours, minutes) {
+  if (hours > 11) { hours = hours - 12; }
+  minutes = minutes / 60;
+  if (minutes < 0.25) {
+    minutes = 0;
+  } else if (minutes >= 0.25 && minutes < 0.75) {
+    minutes = 0.5;
+  } else {
+    hours = hours === 11 ? 0 : hours + 1;
+    minutes = 0;
+  }
+  return CLOCKS[hours + minutes];
+}
+
 function timeToEmoji(time, opts) {
   if (!opts) { opts = {}; }
   let hours = null;
@@ -50,17 +64,7 @@ function timeToEmoji(time, opts) {
       throw new TypeError('Argument is not a Date or momentjs object');
     }
   }
-  if (hours > 11) { hours = hours - 12; }
-  minutes = minutes / 60;
-  if (minutes < 0.25) {
-    minutes = 0;
-  } else if (minutes >= 0.25 && minutes < 0.75) {
-    minutes = 0.5;
-  } else {
-    hours = hours === 11 ? 0 : hours + 1;
-    minutes = 0;
-  }
-  return CLOCKS[hours + minutes];
+  return hoursAndMinutesToEmoji(hours, minutes);
 }
 
 function timeNow() {
@@ -70,4 +74,5 @@ function timeNow() {
 module.exports = {
   timeToEmoji: timeToEmoji,
   timeNow: timeNow,
+  hoursAndMinutesToEmoji: hoursAndMinutesToEmoji,
 };
